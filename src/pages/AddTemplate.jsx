@@ -106,8 +106,8 @@ export default function AddTemplate() {
       <h3 style={{ fontFamily:'Outfit,sans-serif', fontSize:15, fontWeight:800, color:'var(--ink)', marginBottom:4 }}>Live Form Preview</h3>
       <p style={{ fontSize:12, color:'var(--ink3)', marginBottom:16 }}>What the user sees when they open the link.</p>
       <div style={{ background:'var(--paper)', borderRadius:'var(--rl)', border:'1px solid var(--border)', overflow:'hidden', boxShadow:'var(--shadow)' }}>
-        <div style={{ background:'var(--blue)', padding:'16px 18px', display:'flex', alignItems:'center', gap:12 }}>
-          <div style={{ width:38, height:38, borderRadius:9, background:'rgba(255,255,255,.2)', display:'flex', alignItems:'center', justifyContent:'center', fontFamily:'Outfit,sans-serif', fontWeight:900, fontSize:13, color:'#fff', overflow:'hidden' }}>
+        <div style={{ background:'linear-gradient(135deg,#2352ff,#1538d4)', padding:'16px 18px', display:'flex', alignItems:'center', gap:12 }}>
+          <div style={{ width:42, height:42, borderRadius:11, background:'rgba(255,255,255,.18)', display:'flex', alignItems:'center', justifyContent:'center', fontFamily:'Outfit,sans-serif', fontWeight:900, fontSize:13, color:'#fff', overflow:'hidden', flexShrink:0, border:'2px solid rgba(255,255,255,.3)' }}>
             {(() => {
               const sel = filteredOrgs.find(o => o.name === orgName)
               return sel?.logo_url
@@ -115,11 +115,16 @@ export default function AddTemplate() {
                 : previewName ? previewName.slice(0,2).toUpperCase() : selectedOrg ? selectedOrg.icon : '🏢'
             })()}
           </div>
-          <div>
-            <div style={{ fontFamily:'Outfit,sans-serif', fontSize:13, fontWeight:700, color:'#fff' }}>{previewName}</div>
-            <div style={{ fontSize:11, color:'rgba(255,255,255,.75)', marginTop:1 }}>
-              {orgType && <span style={{ opacity:.8 }}>{selectedOrg?.icon} {orgType} · </span>}
-              {role} ID Card Form
+          <div style={{ flex:1, minWidth:0 }}>
+            <div style={{ fontFamily:'Outfit,sans-serif', fontSize:13, fontWeight:700, color:'#fff', overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>{previewName}</div>
+            {(() => {
+              const sel = filteredOrgs.find(o => o.name === orgName)
+              return sel?.address
+                ? <div style={{ fontSize:10, color:'rgba(255,255,255,.8)', marginTop:1, overflow:'hidden', textOverflow:'ellipsis', whiteSpace:'nowrap' }}>{sel.address}</div>
+                : null
+            })()}
+            <div style={{ fontSize:10, color:'rgba(255,255,255,.65)', marginTop:1 }}>
+              {role} ID Card Registration Form
             </div>
           </div>
         </div>
