@@ -25,6 +25,7 @@ const ALL_FIELDS = [
   { key:'fathers_name',     label:"Father's Name"     },
   { key:'class',            label:'Class'             },
   { key:'section',          label:'Section'           },
+  { key:'year',             label:'Year'              },
   { key:'roll_number',      label:'Roll No.'          },
   { key:'admission_number', label:'Admission No.'     },
   { key:'student_id',       label:'Student ID'        },
@@ -45,6 +46,7 @@ const DEFAULT_POSITIONS = {
   fathers_name:      { x: 110, y: 118 },
   class:             { x: 110, y: 130 },
   section:           { x: 200, y: 130 },
+  year:              { x: 110, y: 214 },
   roll_number:       { x: 110, y: 155 },
   admission_number:  { x: 110, y: 178 },
   student_id:        { x: 110, y: 196 },
@@ -472,6 +474,7 @@ const IDCard = forwardRef(function IDCard(
               </div>
               {sub.designation    && <div style={{ fontSize:11, color:t.c1, fontWeight:700, marginBottom:3 }}>{sub.designation}</div>}
               {sub.class          && <div style={{ fontSize:11, color:'#666' }}>Class {sub.class}{sub.section?`-${sub.section}`:''}</div>}
+              {sub.year           && <div style={{ fontSize:11, color:'#666' }}>Year: {sub.year}</div>}
               {sub.roll_number    && <div style={{ fontSize:11, color:'#666' }}>Roll No: {sub.roll_number}</div>}
               {sub.admission_number && <div style={{ fontSize:11, color:'#666' }}>Adm: {sub.admission_number}</div>}
               {sub.student_id    && <div style={{ fontSize:11, color:'#666' }}>Student ID: {sub.student_id}</div>}
@@ -483,6 +486,7 @@ const IDCard = forwardRef(function IDCard(
             paddingTop:10, borderTop:'1px solid #f0f0f0' }}>
             {[
               ['Student ID',    sub.student_id],
+              ['Year',          sub.year],
               ['Date of Birth', formatDOB(sub.date_of_birth)],
               ['Blood Group',   sub.blood_group],
               ['Contact',       sub.contact_number],

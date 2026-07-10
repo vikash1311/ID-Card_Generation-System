@@ -14,6 +14,7 @@ export default function Success() {
     ['Role',          sub.role        || role],
     ['Class',         sub.class],
     ['Section',       sub.section],
+    ['Year',          sub.year],
     ['Roll Number',   sub.roll_number],
     ['Student ID',    sub.student_id],
     ['Contact',       sub.contact_number],

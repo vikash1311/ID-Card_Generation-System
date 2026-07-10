@@ -180,6 +180,7 @@ const ALL_FIELDS = [
   { key:'fathers_name',      label:"Father's Name",     icon:'👨' },
   { key:'class',             label:'Class',             icon:'🏫' },
   { key:'section',           label:'Section',           icon:'📌' },
+  { key:'year',              label:'Year',              icon:'📅' },
   { key:'roll_number',       label:'Roll No.',          icon:'🎯' },
   { key:'admission_number',  label:'Admission No.',     icon:'🔢' },
   { key:'student_id',        label:'Student ID',        icon:'🪪' },
@@ -198,6 +199,7 @@ const DEFAULT_FIELD_POSITIONS = {
   name:              { x:110, y:100 },
   class:             { x:110, y:130 },
   section:           { x:200, y:130 },
+  year:              { x:110, y:214 },
   roll_number:       { x:110, y:155 },
   admission_number:  { x:110, y:178 },
   student_id:        { x:110, y:196 },
@@ -285,6 +287,7 @@ function QRElement({ config, sub, onMove, selected, onSelect }) {
     if (config.qrData === 'name')           return sub.name           || 'VIRA-ID'
     if (config.qrData === 'roll_number')    return sub.roll_number    || sub.id || 'VIRA-ID'
     if (config.qrData === 'student_id')     return sub.student_id     || sub.id || 'VIRA-ID'
+    if (config.qrData === 'year')           return sub.year           || 'VIRA-ID'
     if (config.qrData === 'contact_number') return sub.contact_number || 'VIRA-ID'
     if (config.qrData === 'employee_id')    return sub.employee_id    || sub.id || 'VIRA-ID'
     // default: 'id' — encode the submission id (most useful for scanning)
@@ -361,7 +364,7 @@ function QRElement({ config, sub, onMove, selected, onSelect }) {
    FIELD STYLE HELPERS
 ══════════════════════════════════════════════════════════ */
 const _DFP = {
-  name:{x:110,y:100},class:{x:110,y:130},section:{x:200,y:130},
+  name:{x:110,y:100},class:{x:110,y:130},section:{x:200,y:130},year:{x:110,y:214},
   roll_number:{x:110,y:155},admission_number:{x:110,y:178},student_id:{x:110,y:196},
   date_of_birth:{x:16,y:220},blood_group:{x:175,y:220},
   contact_number:{x:16,y:255},emergency_contact:{x:16,y:288},
@@ -1767,6 +1770,7 @@ export default function IDCardBuilder() {
                         { val:'name',           label:'Full Name',        desc:'Student/staff name' },
                         { val:'roll_number',    label:'Roll Number',      desc:'Roll / admission no.' },
                         { val:'student_id',     label:'Student ID',       desc:'Student ID number' },
+                        { val:'year',           label:'Year',             desc:'Year (e.g. I, II, III, IV)' },
                         { val:'employee_id',    label:'Employee ID',      desc:'Employee ID number' },
                         { val:'contact_number', label:'Contact Number',   desc:'Phone number' },
                         { val:'custom',         label:'Custom Text',      desc:'URL or your own value' },

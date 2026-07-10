@@ -15,6 +15,8 @@ const FIELD_META = {
   FathersName:          { label:"Father's Name",      icon:'👨', type:'text',     required:false },
   ClassN:               { label:'Class',              icon:'🏫', type:'text',     required:false },
   Section:              { label:'Section',            icon:'📌', type:'text',     required:false },
+  Year:                 { label:'Year',               icon:'📅', type:'select',   required:false,
+    options:['','I','II','III','IV'] },
   DateofBirth:          { label:'Date of Birth',      icon:'🎂', type:'date',     required:false },
   AdmissionNumber:      { label:'Admission Number',   icon:'🔢', type:'text',     required:false },
   StudentID:            { label:'Student ID',         icon:'🪪', type:'text',     required:false },
