@@ -27,6 +27,7 @@ const ALL_FIELDS = [
   { key:'section',          label:'Section'           },
   { key:'roll_number',      label:'Roll No.'          },
   { key:'admission_number', label:'Admission No.'     },
+  { key:'student_id',       label:'Student ID'        },
   { key:'date_of_birth',    label:'Date of Birth'     },
   { key:'blood_group',      label:'Blood Group'       },
   { key:'contact_number',   label:'Contact'           },
@@ -46,6 +47,7 @@ const DEFAULT_POSITIONS = {
   section:           { x: 200, y: 130 },
   roll_number:       { x: 110, y: 155 },
   admission_number:  { x: 110, y: 178 },
+  student_id:        { x: 110, y: 196 },
   date_of_birth:     { x: 16,  y: 220 },
   blood_group:       { x: 175, y: 220 },
   contact_number:    { x: 16,  y: 255 },
@@ -353,9 +355,10 @@ const IDCard = forwardRef(function IDCard(
               if (c.qrData === 'custom')         return c.qrCustomText || 'VIRA-ID'
               if (c.qrData === 'name')           return sub.name           || 'VIRA-ID'
               if (c.qrData === 'roll_number')    return sub.roll_number    || sub.id || 'VIRA-ID'
+              if (c.qrData === 'student_id')     return sub.student_id     || sub.id || 'VIRA-ID'
               if (c.qrData === 'contact_number') return sub.contact_number || 'VIRA-ID'
               if (c.qrData === 'employee_id')    return sub.employee_id    || sub.id || 'VIRA-ID'
-              return sub.id || sub.admission_number || sub.roll_number || 'VIRA-ID'
+              return sub.id || sub.student_id || sub.admission_number || sub.roll_number || 'VIRA-ID'
             })()
             const size       = c.qrSize || 56
             const barcodeH   = c.showBarcode !== false ? 30 : 0
@@ -471,6 +474,7 @@ const IDCard = forwardRef(function IDCard(
               {sub.class          && <div style={{ fontSize:11, color:'#666' }}>Class {sub.class}{sub.section?`-${sub.section}`:''}</div>}
               {sub.roll_number    && <div style={{ fontSize:11, color:'#666' }}>Roll No: {sub.roll_number}</div>}
               {sub.admission_number && <div style={{ fontSize:11, color:'#666' }}>Adm: {sub.admission_number}</div>}
+              {sub.student_id    && <div style={{ fontSize:11, color:'#666' }}>Student ID: {sub.student_id}</div>}
               {sub.employee_id   && <div style={{ fontSize:11, color:'#666' }}>Emp ID: {sub.employee_id}</div>}
             </div>
           </div>
@@ -478,6 +482,7 @@ const IDCard = forwardRef(function IDCard(
           <div style={{ display:'flex', flexDirection:'column', gap:5,
             paddingTop:10, borderTop:'1px solid #f0f0f0' }}>
             {[
+              ['Student ID',    sub.student_id],
               ['Date of Birth', formatDOB(sub.date_of_birth)],
               ['Blood Group',   sub.blood_group],
               ['Contact',       sub.contact_number],

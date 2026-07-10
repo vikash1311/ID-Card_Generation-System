@@ -15,6 +15,7 @@ export default function Success() {
     ['Class',         sub.class],
     ['Section',       sub.section],
     ['Roll Number',   sub.roll_number],
+    ['Student ID',    sub.student_id],
     ['Contact',       sub.contact_number],
     ['Blood Group',   sub.blood_group],
     ['Designation',   sub.designation],

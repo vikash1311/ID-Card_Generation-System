@@ -4,8 +4,8 @@ import { useOrganizations } from '../hooks/useOrganizations'
 import { Input, Btn, Card, Badge } from '../components/shared/index'
 import toast from 'react-hot-toast'
 
-const ALL_FIELDS = ['Name','FathersName','ClassN','Section','DateofBirth','AdmissionNumber','RollNumber','EmployeeID','ContactNumber','EmergencyContact','BloodGroup','UploadYourPhoto','PrincipalSignature','Address','ModeOfTransportation','Designation','AadharCard','Department','EmailId']
-const ICONS = {Name:'👤',FathersName:'👨',ClassN:'🏫',Section:'📌',DateofBirth:'🎂',AdmissionNumber:'🔢',RollNumber:'🎯',EmployeeID:'🪪',ContactNumber:'📱',EmergencyContact:'🚨',BloodGroup:'🩸',UploadYourPhoto:'📷',PrincipalSignature:'✍️',Address:'📍',ModeOfTransportation:'🚌',Designation:'💼',AadharCard:'🪪',Department:'🏢',EmailId:'✉️'}
+const ALL_FIELDS = ['Name','FathersName','ClassN','Section','DateofBirth','AdmissionNumber','StudentID','RollNumber','EmployeeID','ContactNumber','EmergencyContact','BloodGroup','UploadYourPhoto','PrincipalSignature','Address','ModeOfTransportation','Designation','AadharCard','Department','EmailId']
+const ICONS = {Name:'👤',FathersName:'👨',ClassN:'🏫',Section:'📌',DateofBirth:'🎂',AdmissionNumber:'🔢',StudentID:'🪪',RollNumber:'🎯',EmployeeID:'🪪',ContactNumber:'📱',EmergencyContact:'🚨',BloodGroup:'🩸',UploadYourPhoto:'📷',PrincipalSignature:'✍️',Address:'📍',ModeOfTransportation:'🚌',Designation:'💼',AadharCard:'🪪',Department:'🏢',EmailId:'✉️'}
 
 const ORG_TYPES = [
   { value: 'School',   label: 'School',   icon: '🏫', placeholder: 'e.g. Netaji School, DPS Nagpur...'      },

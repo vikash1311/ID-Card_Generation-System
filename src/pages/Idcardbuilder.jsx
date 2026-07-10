@@ -182,6 +182,7 @@ const ALL_FIELDS = [
   { key:'section',           label:'Section',           icon:'📌' },
   { key:'roll_number',       label:'Roll No.',          icon:'🎯' },
   { key:'admission_number',  label:'Admission No.',     icon:'🔢' },
+  { key:'student_id',        label:'Student ID',        icon:'🪪' },
   { key:'date_of_birth',     label:'Date of Birth',     icon:'🎂' },
   { key:'blood_group',       label:'Blood Group',       icon:'🩸' },
   { key:'contact_number',    label:'Contact',           icon:'📱' },
@@ -199,6 +200,7 @@ const DEFAULT_FIELD_POSITIONS = {
   section:           { x:200, y:130 },
   roll_number:       { x:110, y:155 },
   admission_number:  { x:110, y:178 },
+  student_id:        { x:110, y:196 },
   date_of_birth:     { x:16,  y:220 },
   blood_group:       { x:175, y:220 },
   contact_number:    { x:16,  y:255 },
@@ -282,10 +284,11 @@ function QRElement({ config, sub, onMove, selected, onSelect }) {
     if (config.qrData === 'custom') return config.qrCustomText || 'VIRA-ID'
     if (config.qrData === 'name')           return sub.name           || 'VIRA-ID'
     if (config.qrData === 'roll_number')    return sub.roll_number    || sub.id || 'VIRA-ID'
+    if (config.qrData === 'student_id')     return sub.student_id     || sub.id || 'VIRA-ID'
     if (config.qrData === 'contact_number') return sub.contact_number || 'VIRA-ID'
     if (config.qrData === 'employee_id')    return sub.employee_id    || sub.id || 'VIRA-ID'
     // default: 'id' — encode the submission id (most useful for scanning)
-    return sub.id || sub.admission_number || sub.roll_number || 'VIRA-ID'
+    return sub.id || sub.student_id || sub.admission_number || sub.roll_number || 'VIRA-ID'
   }, [sub, config.qrData, config.qrCustomText])
 
   // Auto position: bottom-right corner above barcode area
@@ -359,7 +362,7 @@ function QRElement({ config, sub, onMove, selected, onSelect }) {
 ══════════════════════════════════════════════════════════ */
 const _DFP = {
   name:{x:110,y:100},class:{x:110,y:130},section:{x:200,y:130},
-  roll_number:{x:110,y:155},admission_number:{x:110,y:178},
+  roll_number:{x:110,y:155},admission_number:{x:110,y:178},student_id:{x:110,y:196},
   date_of_birth:{x:16,y:220},blood_group:{x:175,y:220},
   contact_number:{x:16,y:255},emergency_contact:{x:16,y:288},
   address:{x:16,y:320},designation:{x:110,y:118},
@@ -1763,6 +1766,7 @@ export default function IDCardBuilder() {
                         { val:'id',             label:'Submission ID',    desc:'Unique record ID' },
                         { val:'name',           label:'Full Name',        desc:'Student/staff name' },
                         { val:'roll_number',    label:'Roll Number',      desc:'Roll / admission no.' },
+                        { val:'student_id',     label:'Student ID',       desc:'Student ID number' },
                         { val:'employee_id',    label:'Employee ID',      desc:'Employee ID number' },
                         { val:'contact_number', label:'Contact Number',   desc:'Phone number' },
                         { val:'custom',         label:'Custom Text',      desc:'URL or your own value' },

@@ -17,6 +17,7 @@ const FIELD_META = {
   Section:              { label:'Section',            icon:'📌', type:'text',     required:false },
   DateofBirth:          { label:'Date of Birth',      icon:'🎂', type:'date',     required:false },
   AdmissionNumber:      { label:'Admission Number',   icon:'🔢', type:'text',     required:false },
+  StudentID:            { label:'Student ID',         icon:'🪪', type:'text',     required:false },
   RollNumber:           { label:'Roll Number',        icon:'🎯', type:'text',     required:false },
   EmployeeID:           { label:'Employee ID',        icon:'🪪', type:'text',     required:false },
   ContactNumber:        { label:'Contact Number',     icon:'📱', type:'tel',      required:false },
@@ -473,6 +474,8 @@ export default function DetailsForm() {
         e[f]='Enter a valid 10-digit number'
       if(f==='EmailId' && formData[f] && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData[f]))
         e[f]='Enter a valid email address'
+      if(f==='StudentID' && formData[f] && !/^[a-zA-Z0-9]+$/.test(formData[f]))
+        e[f]='Enter a valid alphanumeric Student ID'
       if(f==='ContactNumber' && errors[f]?.includes('already registered')) e[f]=errors[f]
     })
     if(hasPhoto && !photoCropped) e.photo='Profile photo is required'

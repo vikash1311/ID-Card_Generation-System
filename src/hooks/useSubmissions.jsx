@@ -20,6 +20,7 @@ function mapToFirestore(formData) {
     section:           formData.Section              || formData.section     || null,
     roll_number:       formData.RollNumber           || formData.roll_number || null,
     admission_number:  formData.AdmissionNumber      || formData.admission_number || null,
+    student_id:        formData.StudentID            || formData.student_id       || null,
     date_of_birth:     formData.DateofBirth          || formData.date_of_birth    || null,
     contact_number:    formData.ContactNumber        || formData.contact_number   || null,
     emergency_contact: formData.EmergencyContact     || formData.emergency_contact|| null,
