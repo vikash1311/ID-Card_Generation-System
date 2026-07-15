@@ -20,7 +20,7 @@ const CSV_COLS = [
   { key:'date_of_birth',     label:'Date of Birth'     },
   { key:'blood_group',       label:'Blood Group'       },
   { key:'contact_number',    label:'Contact Number'    },
-  { key:'emergency_contact', label:'Emergency Contact' },
+  { key:'emergency_contact', label:'Emergency No.'     },
   { key:'email_id',          label:'Email'             },
   { key:'employee_id',       label:'Employee ID'       },
   { key:'designation',       label:'Designation'       },

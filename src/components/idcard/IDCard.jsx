@@ -32,7 +32,7 @@ const ALL_FIELDS = [
   { key:'date_of_birth',    label:'Date of Birth'     },
   { key:'blood_group',      label:'Blood Group'       },
   { key:'contact_number',   label:'Contact'           },
-  { key:'emergency_contact',label:'Emergency Contact' },
+  { key:'emergency_contact',label:'Emergency No.'     },
   { key:'address',          label:'Address'           },
   { key:'designation',      label:'Designation'       },
   { key:'department',       label:'Department'        },

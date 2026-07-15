@@ -187,7 +187,7 @@ const ALL_FIELDS = [
   { key:'date_of_birth',     label:'Date of Birth',     icon:'🎂' },
   { key:'blood_group',       label:'Blood Group',       icon:'🩸' },
   { key:'contact_number',    label:'Contact',           icon:'📱' },
-  { key:'emergency_contact', label:'Emergency Contact', icon:'🚨' },
+  { key:'emergency_contact', label:'Emergency No.',     icon:'🚨' },
   { key:'address',           label:'Address',           icon:'📍' },
   { key:'designation',       label:'Designation',       icon:'💼' },
   { key:'department',        label:'Department',        icon:'🏢' },

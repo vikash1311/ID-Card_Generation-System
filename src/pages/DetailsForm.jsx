@@ -23,7 +23,7 @@ const FIELD_META = {
   RollNumber:           { label:'Roll Number',        icon:'🎯', type:'text',     required:false },
   EmployeeID:           { label:'Employee ID',        icon:'🪪', type:'text',     required:false },
   ContactNumber:        { label:'Contact Number',     icon:'📱', type:'tel',      required:false },
-  EmergencyContact:     { label:'Emergency Contact',  icon:'🚨', type:'tel',      required:false },
+  EmergencyContact:     { label:'Emergency No.',      icon:'🚨', type:'tel',      required:false },
   BloodGroup:           { label:'Blood Group',        icon:'🩸', type:'select',   required:false,
     options:['','A+','A-','B+','B-','AB+','AB-','O+','O-'] },
   Address:              { label:'Address',            icon:'📍', type:'textarea', required:false },

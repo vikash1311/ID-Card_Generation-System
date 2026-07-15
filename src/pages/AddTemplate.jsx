@@ -7,6 +7,18 @@ import toast from 'react-hot-toast'
 const ALL_FIELDS = ['Name','FathersName','ClassN','Section','Year','DateofBirth','AdmissionNumber','StudentID','RollNumber','EmployeeID','ContactNumber','EmergencyContact','BloodGroup','UploadYourPhoto','PrincipalSignature','Address','ModeOfTransportation','Designation','AadhaarNumber','Department','EmailId','ValidFrom','ValidTill','BatchTiming']
 const ICONS = {Name:'👤',FathersName:'👨',ClassN:'🏫',Section:'📌',Year:'📅',DateofBirth:'🎂',AdmissionNumber:'🔢',StudentID:'🪪',RollNumber:'🎯',EmployeeID:'🪪',ContactNumber:'📱',EmergencyContact:'🚨',BloodGroup:'🩸',UploadYourPhoto:'📷',PrincipalSignature:'✍️',Address:'📍',ModeOfTransportation:'🚌',Designation:'💼',AadhaarNumber:'🪪',Department:'🏢',EmailId:'✉️',ValidFrom:'📅',ValidTill:'📅',BatchTiming:'⏰'}
 
+const formatFieldLabel = (f) => {
+  if (f === 'EmergencyContact') return 'Emergency No.'
+  if (f === 'StudentID') return 'Student ID'
+  if (f === 'EmployeeID') return 'Employee ID'
+  if (f === 'DateofBirth') return 'Date of Birth'
+  if (f === 'EmailId') return 'Email ID'
+  if (f === 'AadhaarNumber') return 'Aadhaar Number'
+  if (f === 'BatchTiming') return 'Batch / Timing'
+  return f.replace(/([A-Z])/g,' $1').trim()
+}
+
+
 const ORG_TYPES = [
   { value: 'School',   label: 'School',   icon: '🏫', placeholder: 'e.g. Netaji School, DPS Nagpur...'      },
   { value: 'College',  label: 'College',  icon: '🎓', placeholder: 'e.g. Prerna College, RCOEM...'          },
@@ -135,8 +147,8 @@ export default function AddTemplate() {
             : <div style={{ display:'flex', flexDirection:'column', gap:10 }}>
                 {fields.slice(0,5).map(f => (
                   <div key={f}>
-                    <div style={{ fontSize:10, fontWeight:700, color:'var(--ink3)', textTransform:'uppercase', letterSpacing:.4, marginBottom:4 }}>{f.replace(/([A-Z])/g,' $1').trim()} *</div>
-                    <div style={{ background:'var(--paper2)', borderRadius:6, padding:'8px 10px', fontSize:12, color:'var(--ink3)', border:'1px solid var(--border)' }}>Enter {f.replace(/([A-Z])/g,' $1').trim().toLowerCase()}...</div>
+                    <div style={{ fontSize:10, fontWeight:700, color:'var(--ink3)', textTransform:'uppercase', letterSpacing:.4, marginBottom:4 }}>{formatFieldLabel(f)} *</div>
+                    <div style={{ background:'var(--paper2)', borderRadius:6, padding:'8px 10px', fontSize:12, color:'var(--ink3)', border:'1px solid var(--border)' }}>Enter {formatFieldLabel(f).toLowerCase()}...</div>
                   </div>
                 ))}
                 {fields.length > 5 && <div style={{ fontSize:11, color:'var(--ink3)', textAlign:'center' }}>+{fields.length-5} more fields...</div>}
@@ -287,7 +299,7 @@ export default function AddTemplate() {
                   <div key={f} onClick={() => toggleField(f)}
                     style={{ display:'flex', alignItems:'center', gap:8, padding:'10px 12px', borderRadius:'var(--r)', border:`1.5px solid ${on?'var(--blue)':'var(--border)'}`, background:on?'var(--blue-s)':'var(--paper)', cursor:'pointer', transition:'all .15s' }}>
                     <span style={{ fontSize:15, flexShrink:0 }}>{ICONS[f]}</span>
-                    <span style={{ fontSize:12, fontWeight:on?700:500, color:on?'var(--blue)':'var(--ink2)' }}>{f.replace(/([A-Z])/g,' $1').trim()}</span>
+                    <span style={{ fontSize:12, fontWeight:on?700:500, color:on?'var(--blue)':'var(--ink2)' }}>{formatFieldLabel(f)}</span>
                   </div>
                 )
               })}
