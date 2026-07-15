@@ -333,11 +333,15 @@ export default function AllTemplates() {
     try {
       const constraints = [
         where('status', '==', 'approved'),
-        orderBy('submitted_at', 'desc'),
       ]
       if (school        !== 'All') constraints.push(where('school_name', '==', school))
       if (filterClass   !== 'All') constraints.push(where('class',       '==', filterClass))
       if (filterSection !== 'All') constraints.push(where('section',     '==', filterSection))
+
+      const hasClassOrSectionFilter = filterClass !== 'All' || filterSection !== 'All'
+      if (!hasClassOrSectionFilter) {
+        constraints.push(orderBy('submitted_at', 'desc'))
+      }
 
       let cursorChain = [...cursors]
       while (cursorChain.length < pageNum) {
@@ -356,7 +360,15 @@ export default function AllTemplates() {
       pageConstraints.push(limit(PAGE_SIZE))
 
       const snap = await getDocs(query(collection(db, 'submissions'), ...pageConstraints))
-      const docs = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+      let docs = snap.docs.map(d => ({ id: d.id, ...d.data() }))
+
+      if (hasClassOrSectionFilter) {
+        docs.sort((a, b) => {
+          const t1 = a.submitted_at?.toDate ? a.submitted_at.toDate().getTime() : new Date(a.submitted_at || 0).getTime()
+          const t2 = b.submitted_at?.toDate ? b.submitted_at.toDate().getTime() : new Date(b.submitted_at || 0).getTime()
+          return t2 - t1
+        })
+      }
 
       const newCursors = [...cursorChain]
       newCursors[pageNum] = snap.docs[snap.docs.length - 1] || null
@@ -455,11 +467,15 @@ export default function AllTemplates() {
   const buildBaseConstraints = useCallback(() => {
     const base = [
       where('status', '==', 'approved'),
-      orderBy('submitted_at', 'desc'),
     ]
     if (school        !== 'All') base.push(where('school_name', '==', school))
     if (filterClass   !== 'All') base.push(where('class',       '==', filterClass))
     if (filterSection !== 'All') base.push(where('section',     '==', filterSection))
+
+    const hasClassOrSectionFilter = filterClass !== 'All' || filterSection !== 'All'
+    if (!hasClassOrSectionFilter) {
+      base.push(orderBy('submitted_at', 'desc'))
+    }
     return base
   }, [school, filterClass, filterSection])
 
@@ -482,8 +498,17 @@ export default function AllTemplates() {
       }
       cursor = snap.docs[snap.docs.length - 1]
     }
+
+    const hasClassOrSectionFilter = filterClass !== 'All' || filterSection !== 'All'
+    if (hasClassOrSectionFilter) {
+      results.sort((a, b) => {
+        const t1 = a.submitted_at?.toDate ? a.submitted_at.toDate().getTime() : new Date(a.submitted_at || 0).getTime()
+        const t2 = b.submitted_at?.toDate ? b.submitted_at.toDate().getTime() : new Date(b.submitted_at || 0).getTime()
+        return t2 - t1
+      })
+    }
     return results
-  }, [buildBaseConstraints])
+  }, [buildBaseConstraints, filterClass, filterSection])
 
   /* ── Render one card off-screen and capture it ───────────── */
   // Convert any URL to a base64 data URL by fetching through a proxy approach
