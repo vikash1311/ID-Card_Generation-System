@@ -30,9 +30,12 @@ function mapToFirestore(formData) {
     mode_of_transport: formData.ModeOfTransportation || formData.mode_of_transport|| null,
     designation:       formData.Designation          || formData.designation      || null,
     department:        formData.Department           || formData.department       || null,
-    aadhar_card:       formData.AadharCard           || formData.aadhar_card      || null,
+    aadhar_card:       formData.AadhaarNumber        || formData.AadharCard       || formData.aadhar_card      || null,
     employee_id:       formData.EmployeeID           || formData.employee_id      || null,
     email_id:          formData.EmailId              || formData.email_id         || null,
+    valid_from:        formData.ValidFrom            || formData.valid_from       || null,
+    valid_till:        formData.ValidTill            || formData.valid_till       || null,
+    batch_timing:      formData.BatchTiming          || formData.batch_timing     || null,
     principal_signature: formData.PrincipalSignature || formData.principal_signature || null,
   }
 }

@@ -30,9 +30,13 @@ const FIELD_META = {
   ModeOfTransportation: { label:'Mode of Transport', icon:'🚌', type:'select',   required:false,
     options:['','School Bus','Auto Rickshaw','Private Vehicle','Walking','Bicycle','Public Transport'] },
   Designation:          { label:'Designation',       icon:'💼', type:'text',     required:false },
-  AadharCard:           { label:'Aadhar Card Number',icon:'🪪', type:'text',     required:false },
+  AadhaarNumber:        { label:'Aadhaar Number',     icon:'🪪', type:'text',     required:false },
+  AadharCard:           { label:'Aadhaar Number',     icon:'🪪', type:'text',     required:false },
   Department:           { label:'Department',         icon:'🏢', type:'text',     required:false },
   EmailId:              { label:'Email ID',           icon:'✉️', type:'email',    required:false },
+  ValidFrom:            { label:'Valid From',         icon:'📅', type:'date',     required:false },
+  ValidTill:            { label:'Valid Till',         icon:'📅', type:'date',     required:false },
+  BatchTiming:          { label:'Batch / Timing',    icon:'⏰', type:'text',     required:false },
   PrincipalSignature: { label:'Principal Signature', icon:'✍️', type:'signature', required:false },
 }
 
